@@ -27,12 +27,12 @@
             }
 
             nixosModules.default
-            ./client/config.nix
-            ./client/hardware.nix # Shared hardware configuration for Raspberry Pis
+            ./cluster/01.nix
+            ./cluster/hardware.nix # Shared hardware configuration for Raspberry Pis
           ];
         };
       };
-      nixosModules.default = { config }: {
+      nixosModules.default = { config, ... }: {
         imports = [
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel-no-zfs-installer.nix"
           ./genTFTP.nix
